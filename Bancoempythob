@@ -27,21 +27,29 @@ while op != 4:
         print("Depósito efetuado com sucesso!")
         print("**********************************")
 
-    if op == 3:
+    contador= 3
+    for x in range(contador):
+        if op == 3:
+            print("**********************************")
+            aux = float(input("Entre com o valor do saque..........: "))
+            print("**********************************")
+            if aux < dinheiro:
+                dinheiro -= aux
+                print("**********************************")
+                print("Saque efetuado com sucesso!")
+                print("**********************************")
+            else:
+                print("**********************************")
+                print("Saldo Insuficiente!\nOperação cancelada!")
+                print("**********************************")
+            continue
+        break
+    else:
         print("**********************************")
-        aux = float(input("Entre com o valor do saque..........: "))
+        print("Limite de saques atingido no dia!")
         print("**********************************")
-        
-        if aux < dinheiro:
-            dinheiro -= aux
-        else:
-            print("Saldo Insuficiente")
-        
-        print("**********************************")
-        print("Saque efetuado com sucesso!")
-        print("**********************************")
-
+    
     if op == 4:
         print("**********************************")
-        print("Saldo atual.............:  R$%.2f" % dinheiro)
+        print("Obrigado por utilizar nosso banco!\n Volte sempre!")
         print("**********************************")
