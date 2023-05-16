@@ -2,7 +2,7 @@ dinheiro = 0
 op = -100
 
 while op != 4:
-    print("[1] SALDO")
+    print("[1] EXTRATO")
     print("[2] DEPOSITO")
     print("[3] SAQUE")
     print("[4] SAIR")
@@ -27,14 +27,24 @@ while op != 4:
         print("Depósito efetuado com sucesso!")
         print("**********************************")
 
-    contador= 3
+    contador = 3
+    limite_saque = 500.00
+    num_saques = 0
+
     for x in range(contador):
         if op == 3:
             print("**********************************")
             aux = float(input("Entre com o valor do saque..........: "))
             print("**********************************")
-            if aux < dinheiro:
+            if aux > limite_saque:
+                print("**********************************")
+                print("Valor de saque excede o limite máximo de R$500,00!")
+                print("**********************************")
+                continue
+            
+            if (dinheiro - aux) >= 0:
                 dinheiro -= aux
+                num_saques += 1
                 print("**********************************")
                 print("Saque efetuado com sucesso!")
                 print("**********************************")
@@ -43,12 +53,18 @@ while op != 4:
                 print("Saldo Insuficiente!\nOperação cancelada!")
                 print("**********************************")
             continue
+        
         break
     else:
-        print("**********************************")
-        print("Limite de saques atingido no dia!")
-        print("**********************************")
-    
+        if num_saques >= 3:
+            print("**********************************")
+            print("Opção inválida!")
+            print("**********************************")
+        else:
+            print("**********************************")
+            print("Limite de saques atingido no dia!")
+            print("**********************************")
+
     if op == 4:
         print("**********************************")
         print("Obrigado por utilizar nosso banco!\n Volte sempre!")
